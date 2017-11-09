@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class ImageGenerator : MonoBehaviour {
 
@@ -14,7 +13,7 @@ public class ImageGenerator : MonoBehaviour {
 	public GameObject imagePrefab;
 
 	void Start(){
-		rand = new System.Random (25);
+		rand = new System.Random (System.DateTime.UtcNow.Hour);
 		RefreshImages ();
 	}
 			
@@ -38,9 +37,6 @@ public class ImageGenerator : MonoBehaviour {
 			GameObject go = Instantiate (imagePrefab, target.transform);
 			go.GetComponent<SpriteRenderer> ().sprite = images [random];
 			used [random] = true;
-			Debug.Log (random);
 		}
-
-		Debug.Log ("Restarted!");
 	}
 }
